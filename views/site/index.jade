@@ -1,0 +1,32 @@
+extends ../template
+
+block content
+    h4 Welcome to locator. Maybe you next? :)
+
+    div
+        table.table.table-bordered.table-hover(ng-controller='mainCtrl')
+            thead
+                tr
+                    td #
+                    td Nick
+                    td Level
+                    td Location
+                    td Animals
+                    td Licences
+                    td Runes
+                    td
+            tbody
+                tr(ng-repeat='character in characters')
+                    td {{character.id}}
+                    td {{character.name}}
+                    td {{character.level}}
+                    td
+                    td
+                    td
+                    td
+                    td
+                        a.btn.btn-sm.btn-default(ng-click="remove(character)")
+                            span.glyphicon.glyphicon-trash
+                                |  Remove
+
+    pre {{characters}}

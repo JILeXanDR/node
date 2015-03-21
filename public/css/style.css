@@ -1,0 +1,124 @@
+body {
+    background-color: #ecf0f1;
+    font-family: 'Oxygen', sans;
+    margin: auto;
+}
+
+header {
+    background: #E4E4E4;
+    padding: 15px;
+}
+
+header ul {
+    list-style: none;
+    margin: 0;
+}
+
+header ul li {
+    display: inline-block;
+}
+
+header ul li a {
+    margin: 5px;
+}
+
+/*
+ * Nickname
+ */
+.nickname {
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.nickname img {
+    margin-bottom: -2px;
+}
+
+.nickname .name {
+    font-weight: bold;
+}
+
+.nickname a.private img {
+    margin-bottom: 1px;
+}
+
+.nick {
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.nick .name {
+    cursor: pointer;
+}
+
+.nick .speak {
+    color: #008000;
+}
+
+.nick .battle {
+    color: #FF0000;
+}
+
+.nick-another-city,
+.nick-offline {
+    color: #707070;
+}
+
+.nick-another-city {
+    font-style: italic;
+}
+
+.nick-another-city .name {
+    font-weight: normal;
+}
+
+.nick-ignore .name {
+    text-decoration: line-through;
+}
+
+.nick img {
+    margin-bottom: -2px;
+}
+
+.nick img.private {
+    cursor: pointer;
+    height: 9px;
+    margin-bottom: 0;
+    width: 12px;
+}
+
+.nick img.empty,
+.nick img.event-side,
+.nick img.align,
+.nick img.clan,
+.nick img.guild,
+.nick img.study {
+    height: 16px;
+    width: 25px;
+}
+
+.nick img.location,
+.nick img.alcohol,
+.nick img.silence,
+.nick img.blind,
+.nick img.hobble,
+.nick img.hurt,
+.nick img.zimmune {
+    height: 16px;
+    width: 16px;
+}
+
+.nick img.empty-height {
+    width: 1px;
+}
+
+.nick img.empty-private {
+    width: 12px;
+}
+
+.nick img.sex {
+    height: 12px;
+    width: 12px;
+}
+
+/* end: Nickname */

@@ -1,0 +1,14 @@
+extends ../template
+
+block content
+
+    div(ng-controller="mainCtrl")
+
+        h1 Heeeeeeeeey!
+            carnage-nick(name='JILeXanDR', level='123', align='30', clan='brujan', sex='M')
+
+        a.btn.btn-block.btn-primary.btn-primary(ng-click="getRandom()")
+            span.glyphicon.glyphicon-hand-up
+                |  Click there!
+
+        h1 {{message}}
