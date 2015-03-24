@@ -1,6 +1,6 @@
 var orm = require('orm');
 
-orm.connect('mysql://root:@127.0.0.1/node', function (err, db) {
+orm.connect('mysql://root:@127.0.0.1/locator-node', function (err, db) {
     if (err) throw err;
 
     var Character = db.define('character',

@@ -122,3 +122,15 @@ header ul li a {
 }
 
 /* end: Nickname */
+
+tr.inBattle {
+    background: #FCD9D9 !important;
+}
+
+tr.onLine {
+    background: #BEFFBE !important;
+}
+
+tr.offLine {
+    background: #f3f3f3 !important;
+}

@@ -1,32 +1,43 @@
 extends ../template
 
 block content
-    h4 Welcome to locator. Maybe you next? :)
 
-    div
-        table.table.table-bordered.table-hover(ng-controller='mainCtrl')
-            thead
-                tr
-                    td #
-                    td Nick
-                    td Level
-                    td Location
-                    td Animals
-                    td Licences
-                    td Runes
-                    td
-            tbody
-                tr(ng-repeat='character in characters')
-                    td {{character.id}}
-                    td {{character.name}}
-                    td {{character.level}}
-                    td
-                    td
-                    td
-                    td
-                    td
-                        a.btn.btn-sm.btn-default(ng-click="remove(character)")
-                            span.glyphicon.glyphicon-trash
-                                |  Remove
+    div(ng-controller='locatorCtrl')
 
-    pre {{characters}}
+        h4 Welcome to locator of clan. Maybe you next? :)
+
+        a.btn.btn-sm.btn-success(ng-click='newCharacter()')
+            span.glyphicon.glyphicon-plus
+                |  New character
+
+        div
+            table.table.table-bordered.table-hover(ng-init='getCharacters()')
+                thead
+                    tr
+                        td Nick
+                        //td Level
+                        td Weapon
+                        td Location
+                        td Animals
+                        td Licences
+                        td Runes
+                        td Last activity
+                        td Last update
+                        td
+                tbody
+                    tr(ng-repeat='character in characters', ng-class="{onLine: character.location, inBattle: character.battle}")
+                        td: carnage-nick(name='{{character.name}}', level='{{character.level}}', align='{{character.align}}', clan='{{character.clan}}', guild=false, sex='{{character.sex}}')
+                        //td {{character.level}}
+                        td -
+                        td {{customizeLocation(character.city, character.location)}}
+                        td: carnage-animals(animals='rrr(character.animals)')
+                        td
+                        td
+                        td 5m.
+                        td: timer(start-time="character.updated_at") {{days}}d {{hours}}h {{minutes}}m {{seconds}}s
+                        td
+                            .btn-group
+                                a.btn.btn-sm.btn-danger(ng-click='remove(character)')
+                                    span.glyphicon.glyphicon-trash
+                                a.btn.btn-sm.btn-info(ng-click='update(character)')
+                                    span.glyphicon.glyphicon-refresh

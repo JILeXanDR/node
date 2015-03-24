@@ -28,3 +28,36 @@ app.directive('carnageNick', function () {
         template: generateNickTemplate()
     };
 });
+
+app.directive('carnageAnimals', function () {
+
+    var generateTemplate = function () {
+
+        var templateHtml = '';
+
+        templateHtml += '<span ng-repeat="animal in animals track by $index">';
+
+        templateHtml += 'wefwef';
+
+        templateHtml += '</span>';
+
+        return templateHtml;
+    };
+
+    return {
+        restrict: 'E',
+        scope: {
+            animals: '&animals'
+        },
+        link: function (scope, iElm, iAttrs) {
+            var x = eval(scope.animals());
+            console.log(x);
+            // x == {name:"Umur", id:1}
+        },
+        //link: function (scope, elm, attrs, ctrl) {
+        //    scope[attrs.model] = attrs.animals;
+        //    console.log(eval(attrs.animals));
+        //},
+        template: generateTemplate()
+    };
+});
