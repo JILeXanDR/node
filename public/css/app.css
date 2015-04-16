@@ -1,5 +1,3 @@
-
-
 .thumbnail {
     width: 70px;
     height: 70px;
@@ -9,6 +7,12 @@
 
 a {
     font-size: 16px;
+    color: rgb(236, 236, 236);
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #ff009c;
 }
 
 .badge {
@@ -110,16 +114,6 @@ footer.navbar {
 
 .examples span {
     color: #A1FFC9;
-}
-
-.btn-primary {
-    background-color: #2ecc71;
-    border: 1px solid #27ae60;
-}
-
-.btn-primary:hover {
-    background-color: #32B96C;
-    border: 1px solid #27ae60;
 }
 
 .jumbotron {

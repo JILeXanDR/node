@@ -31,33 +31,31 @@ app.directive('carnageNick', function () {
 
 app.directive('carnageAnimals', function () {
 
-    var generateTemplate = function () {
-
-        var templateHtml = '';
-
-        templateHtml += '<span ng-repeat="animal in animals track by $index">';
-
-        templateHtml += 'wefwef';
-
-        templateHtml += '</span>';
-
-        return templateHtml;
-    };
-
     return {
         restrict: 'E',
         scope: {
-            animals: '&animals'
+            animals: '='
         },
         link: function (scope, iElm, iAttrs) {
-            var x = eval(scope.animals());
-            console.log(x);
-            // x == {name:"Umur", id:1}
+            scope.animals = eval(scope.animals) || [];
         },
-        //link: function (scope, elm, attrs, ctrl) {
-        //    scope[attrs.model] = attrs.animals;
-        //    console.log(eval(attrs.animals));
-        //},
-        template: generateTemplate()
+        controller: function ($scope) {
+
+            var x = [
+                {"name": "Лошадь", "level": false, "type": "mount", "num": 10},
+                {"name": "Виверна", "level": 10, "type": "pet", "num": 7}
+            ];
+
+            $scope.getAnimalImage = function (animal) {
+                animal = {"name": "Лошадь", "level": false, "type": "mounts", "num": 10};
+
+                var imageUrl = 'http://img.carnage.ru/i/animals/' + animal.type + '/' + animal.num + '_small.jpg';
+
+                var image = '<img title="image" src="' + imageUrl + '">';
+
+                return image;
+            };
+        },
+        template: '<span ng-repeat="animal in animals track by $index">{{getAnimalImage(animal)}}</span>'
     };
 });

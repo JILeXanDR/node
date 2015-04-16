@@ -14,7 +14,7 @@ app.controller('mainCtrl', ['$scope', '$http', 'cfpLoadingBar', function ($scope
 
     $scope.getRandom = function () {
 
-        cfpLoadingBar.start();
+        //cfpLoadingBar.start();
 
         $http.get('/api/random')
             .success(function (response) {
@@ -23,7 +23,17 @@ app.controller('mainCtrl', ['$scope', '$http', 'cfpLoadingBar', function ($scope
     };
 }]);
 
-app.controller('locatorCtrl', ['$scope', '$http', 'cfpLoadingBar', '$timeout', function ($scope, $http, cfpLoadingBar, $timeout) {
+app.controller('characterCtrl', ['$scope', '$http', 'cfpLoadingBar', function ($scope, $http, cfpLoadingBar) {
+
+    $scope.add = function (character) {
+        $http.post('/api/characters/create', character)
+            .success(function () {
+                alert('Вы добавили нового персонажа');
+            })
+            .error(function () {
+                alert('Ошибка при добавлении');
+            });
+    };
 
     $scope.getCharacters = function () {
         cfpLoadingBar.start();
@@ -125,11 +135,24 @@ app.controller('locatorCtrl', ['$scope', '$http', 'cfpLoadingBar', '$timeout', f
     $scope.update = function (row) {
         cfpLoadingBar.start();
 
-        $http.put('/api/characters/' + row.id + '/update')
+        $http.put('/api/characters/' + row.id + '/update', {})
             .success(function (response) {
                 var index = $scope.characters.indexOf(row);
                 $scope.characters[index] = response;
             });
     };
+}]);
 
+app.controller('gameCtrl', ['$scope', '$http', function ($scope, $http) {
+
+    $scope.try = 20;
+
+    $scope.turn = function () {
+
+        $http.get('/api/game/turn')
+            .success(function (response) {
+                $scope.try = response.try;
+                $scope.prize = response.prize;
+            });
+    };
 }]);

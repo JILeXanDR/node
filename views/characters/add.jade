@@ -1,0 +1,13 @@
+extends ../template
+
+block content
+
+    div(ng-controller='characterCtrl')
+        form.form-horizontal(ng-submit='add(character)')
+            fieldset
+                legend New character
+                label.control-label Name
+                .input-group
+                    input.form-control(placeholder='Enter name', ng-model='character.name')
+                    span.input-group-btn
+                        button.btn.btn-success(type='submit') Validate and save

@@ -1,0 +1,9 @@
+extends ../template
+block content
+    div(ng-controller="gameCtrl")
+        h3 Check your success. Click on the button and win!
+        a.btn.btn-block.btn-primary(ng-click="turn()")
+            span.glyphicon.glyphicon-hand-up Click there!
+
+        h1  Осталось попыток: {{try}}
+        h1(ng-show="prize")  Ваш выигрыш: "{{prize.name}}"

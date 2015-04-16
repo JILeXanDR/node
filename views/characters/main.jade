@@ -1,0 +1,36 @@
+extends ../template
+block content
+    div(ng-controller='characterCtrl')
+        h4 Welcome to locator of clan. Maybe you next? :)
+        .buttons-row
+            a.btn.btn-sm.btn-success(href='/characters/add')
+                span.glyphicon.glyphicon-plus New character
+        div
+            table.table.table-bordered.table-hover.table-characters(ng-init='getCharacters()')
+                thead
+                    tr
+                        td Nick
+                        td Weapon
+                        td Location
+                        td Animals
+                        td Licences
+                        td Runes
+                        td Last activity
+                        //td Last update
+                        td
+                tbody
+                    tr(ng-repeat='character in characters', ng-class="{onLine: character.location, inBattle: character.battle}")
+                        td: carnage-nick(name='{{character.name}}', level='{{character.level}}', align='{{character.align}}', clan='{{character.clan}}', guild=false, sex='{{character.sex}}')
+                        td -
+                        td {{customizeLocation(character.city, character.location)}}
+                        td: carnage-animals(animals='character.animals')
+                        td
+                        td
+                        td 5m.
+                        //td: timer(start-time="character.updated_at") {{days}}d {{hours}}h {{minutes}}m {{seconds}}s
+                        td
+                            .btn-group
+                                a.btn.btn-sm.btn-danger(ng-click='remove(character)')
+                                    span.glyphicon.glyphicon-trash
+                                a.btn.btn-sm.btn-info(ng-click='update(character)')
+                                    span.glyphicon.glyphicon-refresh
